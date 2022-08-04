@@ -22,12 +22,16 @@ import io
 
 import h5py
 
-from tiled.examples.eiger_nxmx import EigerNxmxDataFrameAdapter
+from tiled.adapters.hdf5 import HDF5DatasetAdapter
+from tiled.adapters.mapping import MapAdapter
+from tiled.examples.eiger_nxmx_h5py import read_eiger_nxmx
 
 
 def build_tree(filename):
-    # Download a Nexus file into a memory buffer.
-    return EigerNxmxDataFrameAdapter.from_file(filename)
+    data = read_eiger_nxmx(filename)
+    return MapAdapter({'data': HDF5DatasetAdapter(data['data']),
+                   'cc000':HDF5DatasetAdapter(data['cc000']),
+                   })
 
 
 EXAMPLE_FILENAME = "examples/lys01_lsdc1_01_1044_master.h5"  # noqa
