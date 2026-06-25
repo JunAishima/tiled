@@ -1,7 +1,7 @@
 import collections
 import collections.abc
 import pathlib
-import threading
+import atexit
 import warnings
 from typing import Optional, Union
 from urllib.parse import parse_qs, urlparse
@@ -332,4 +332,4 @@ SERVERS = []  # servers spawned using simple
 # mechanism that runs at interpreter shutdown.
 # We need to intervene at that layer to close the portal, or else
 # we will wait forever for a thread run by the portal to join().
-threading._register_atexit(_cleanup_servers)
+atexit_register(_cleanup_servers)
