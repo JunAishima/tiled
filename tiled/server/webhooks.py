@@ -131,7 +131,7 @@ def check_url_ssrf_safety(url: str, local_blocked_networks: Optional[list[str]] 
     ValueError
         If the URL hostname resolves to any address in the union of ``_BLOCKED_NETWORKS` and blocked_networks`.
     """
-    print(f"check_url_ssrf_safety: {local_blocked_networks} {allow_delivery_hists}")
+    logger.error(f"check_url_ssrf_safety: {local_blocked_networks} {allow_delivery_hists}")
     parsed = urlparse(url)
     hostname = parsed.hostname
     if not hostname:

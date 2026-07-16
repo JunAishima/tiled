@@ -64,7 +64,7 @@ def _build_url_validator(config: WebhooksConfig) -> UrlValidator:
     With the default config (both ``False``), this is the production
     validator that enforces HTTPS and blocks SSRF targets.
     """
-    print(config)
+    logger.error(config)
     if config.allow_http and config.allow_private_addresses:
         logger.error(
             "Webhook URL validation is fully relaxed: "
