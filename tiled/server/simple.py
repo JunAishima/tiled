@@ -166,7 +166,7 @@ class SimpleTiledServer:
         server_settings = {}
         if enable_webhooks:
             webhook_cfg = WebhooksConfig(secret_keys=[webhook_secret_key], blocked_networks=blocked_networks,
-                allow_delivery_hosts=allow_delivery_hosts)
+                allow_delivery_hosts=allow_delivery_hosts, allow_http=True, allow_private_addresses=True)
             server_settings["webhooks"] = webhook_cfg
         self.app = build_app(
             self.catalog,
