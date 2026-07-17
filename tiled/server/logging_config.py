@@ -68,10 +68,10 @@ LOGGING_CONFIG = {
         },
     },
     "loggers": {
-        "uvicorn.access": {"handlers": ["access"], "level": "INFO", "propagate": False},
+        "uvicorn.access": {"handlers": ["access"], "level": "DEBUG", "propagate": False},
         "uvicorn.error": {
             "handlers": ["default"],
-            "level": "INFO",
+            "level": "DEBUG",
             "propagate": False,
         },
     },
